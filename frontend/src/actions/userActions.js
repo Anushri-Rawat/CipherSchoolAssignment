@@ -1,10 +1,10 @@
 import axios from "axios";
-const BASE_URL = "http//localhost:5000";
+const BASE_URL = "https://cipher-school-backend-we82.onrender.com";
 
 export const register = async (data, dispatch) => {
   try {
     dispatch({ type: "START_LOADING" });
-    const url = `/api/users/register`;
+    const url = `${BASE_URL}/api/users/register`;
     const response = await axios.post(url, data);
     dispatch({
       type: "SET_USER",
@@ -34,7 +34,7 @@ export const register = async (data, dispatch) => {
 export const login = async (data, dispatch) => {
   try {
     dispatch({ type: "START_LOADING" });
-    const url = `/api/users/login`;
+    const url = `${BASE_URL}/api/users/login`;
     const response = await axios.post(url, data);
     dispatch({
       type: "SET_USER",
@@ -70,7 +70,7 @@ export const logoutFunc = (dispatch) => {
 export const getMyProfile = async (user, dispatch) => {
   try {
     dispatch({ type: "START_LOADING" });
-    const url = `/api/users`;
+    const url = `${BASE_URL}/api/users`;
     const res = await axios.get(url, {
       headers: {
         authorization: `Bearer ${user.token}`,
@@ -93,7 +93,7 @@ export const getMyProfile = async (user, dispatch) => {
 export const updateProfile = async (user, data, dispatch) => {
   try {
     dispatch({ type: "START_LOADING" });
-    const url = `/api/users`;
+    const url = `${BASE_URL}/api/users`;
     const res = await axios.patch(url, data, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -125,7 +125,7 @@ export const updateProfile = async (user, data, dispatch) => {
 export const updatePassword = async (user, data, dispatch) => {
   try {
     dispatch({ type: "START_LOADING" });
-    const url = `/api/users/updatePassword`;
+    const url = `${BASE_URL}/api/users/updatePassword`;
     const res = await axios.patch(url, data, {
       headers: {
         authorization: `Bearer ${user.token}`,
